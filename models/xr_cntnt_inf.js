@@ -67,9 +67,13 @@ const XR_CNTNT_INF = sequelize.define('XR_CNTNT_INF', {
     type: DataTypes.STRING,
     allowNull: false,
   },
-  CNTI_SORTBY: {
+  CNTI_SORT: {
     type: DataTypes.INTEGER,
     allowNull: true,
+  },
+  CNTI_SORTBY: {
+    type: DataTypes.STRING,
+    allowNull: false,
   },
 
 }, {

@@ -103,7 +103,7 @@ app.get('/api/getContInfo/:idx', async (req, res) => {
     }
 });
 
-// 콘텐츠 저장
+// 콘텐츠 저장 POST 방식으로 데이터 받아서 해야하나 임시로
 app.get('/api/insertCont',async (req, res) => {
     try {
         // 테스트 내역 저장
@@ -123,7 +123,8 @@ app.get('/api/insertCont',async (req, res) => {
             CNTI_MIN_UCNT: 1,
             CNTI_MAX_UCNT: 2,
             CNTI_DESC: '인설트 테스트',
-            CNTI_SORTBY: 139,
+            CNTI_SORT:161,
+            CNTI_SORTBY: 'DESC',
         });
     } catch (error) {
         console.error('Error fetching users:', error);
