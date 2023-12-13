@@ -1,0 +1,23 @@
+{
+  "development": {
+    "username": "webmas",
+    "password": "!airpass29",
+    "database": "XRSPORTS",
+    "host": "xrplatform.kr",
+    "dialect": "mysql"
+  },
+  "test": {
+    "username": "tester",
+    "password": "password1!",
+    "database": "testdb",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  },
+  "production": {
+    "username": "webmas",
+    "password": "!airpass29",
+    "database": "XRSPORTS",
+    "host": "xrplatform.kr",
+    "dialect": "mysql"
+  }
+}
