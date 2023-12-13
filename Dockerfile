@@ -16,6 +16,7 @@ RUN npm install dotenv
 RUN npm install mysql2 sequelize sequelize-cli
 RUN sequelize init
 RUN npm install @aws-sdk/client-s3
+RUN npm install ejs
 
 # 코드 복사
 COPY . .

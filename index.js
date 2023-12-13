@@ -9,11 +9,13 @@ const sequelize = new Sequelize(config.development);
 /// 모델 불러오기
 const cntntInf = require('./models/xr_cntnt_inf');
 const RS = require('./models/xr_cntnt_rs');
+const path = require('path');
+const ejs = require('ejs');
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-//aws 연동
+//aws 연동 /////////////////////////////////////////////////////////////////////////////////
 const { S3Client, GetObjectCommand, ListObjectsV2Command} = require('@aws-sdk/client-s3');
 const { createReadStream, createWriteStream } = require('fs');
 
@@ -54,9 +56,20 @@ async function listS3Files(bucketName, prefix = '') {
 listS3Files(bucketName, prefix)
     .then((fileList) => console.log('파일 목록 조회 완료:', fileList))
     .catch((err) => console.error('파일 목록 조회 중 오류:', err));
+/////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+///// 뷰 페이지 렌더링 /////////////////////////////////////////////////////////////////////////////////////
+app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, 'views'));
+app.use(express.static(path.join(__dirname, 'public')));
 
+app.get('/page', (req, res) => {
+    res.render('index', { title: 'Express 웹 페이지', message: '안녕하세요!' });
+});
 
+/////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+///////////////////////API 작업 with 시퀄라이즈(ORM) ///////////////////////////////////////////////////////
 // 특정 컨텐츠 조회 with XR_CNTNT_RS
 app.get('/api/getContInfo/:idx', async (req, res) => {
     try {
@@ -78,7 +91,7 @@ app.get('/api/getContInfo/:idx', async (req, res) => {
         res.status(500).json({ error: 'Internal Server Error' });
     }
 });
-
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 // 포트 연결 확인
 app.listen(port, () =>
