@@ -17,6 +17,7 @@ RUN npm install mysql2 sequelize sequelize-cli
 RUN sequelize init
 RUN npm install @aws-sdk/client-s3
 RUN npm install ejs
+RUN npm install @aws-sdk/s3-request-presigner
 
 # 코드 복사
 COPY . .
