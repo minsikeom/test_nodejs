@@ -102,6 +102,34 @@ app.get('/api/getContInfo/:idx', async (req, res) => {
         res.status(500).json({ error: 'Internal Server Error' });
     }
 });
+
+// 콘텐츠 저장
+app.get('/api/insertCont',async (req, res) => {
+    try {
+        // 테스트 내역 저장
+        const newCont = await cntntInf.create({ 
+            CNTI_CODE: 'XR.10.testesttest11',
+            CNTT_CODE: 'XR',
+            CNTC_CODE: '30',
+            SS_CODE: '22',
+            CRT_CODE: 20,
+            CNTI_REQUIRE_SENSOR:'00,10',
+            CNTI_NAME: '2222222',
+            CNTI_E_NAME: '2222222',
+            CNTI_VERSION: '1.1',
+            CNTI_F_NAME: '2222222',
+            CNTI_F_ID: '2222222',
+            CNTI_F_PATH: '/uploads/contents/XR.10.testtesttest',
+            CNTI_MIN_UCNT: 1,
+            CNTI_MAX_UCNT: 2,
+            CNTI_DESC: '인설트 테스트',
+            CNTI_SORTBY: 139,
+        });
+    } catch (error) {
+        console.error('Error fetching users:', error);
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
+});
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
