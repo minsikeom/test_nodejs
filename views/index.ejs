@@ -3,10 +3,37 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title><%= title %></title>
+  <title>111</title>
 </head>
 <body>
-  <h1><%= message %></h1>
-  <p>이 페이지는 <%= title %> 입니다.121212121213333</p>
+  <h1>222</h1>
+  <p>이 페이지는3333입니다.121212121213333</p>
+  <p><strong>CNTI_CODE:</strong> <%= data.CNTI_CODE %></p>
+  <p><strong>CNTT_CODE:</strong> <%= data.CNTT_CODE %></p>
+  <!-- 다른 필요한 속성들을 출력 -->
+
+  <h2>RS Array</h2>
+  <ul>
+    <% data.rs.forEach(rs => { %>
+      <li>
+        <strong>CNTRS_NUM:</strong> <%= rs.CNTRS_NUM %><br>
+        <strong>CNTRS_F_NAME:</strong> <%= rs.CNTRS_F_NAME %><br>
+        <!-- 다른 필요한 속성들을 출력 -->
+      </li>
+    <% }); %>
+  </ul>
+  <form action="/submit" method="post">
+    <label for="username">사용자 이름:</label>
+    <input type="text" id="username" name="username" required>
+    <br>
+    <label for="email">이메일:</label>
+    <input type="email" id="email" name="email" required>
+    <br>
+    <label for="nickName">닉네임:</label>
+    <input type="text" id="nickName" name="nickName" required>
+    <br>
+    <button type="submit">전송</button>
+  </form>
+
 </body>
 </html>
